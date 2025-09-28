@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCreators - Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .timer-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+		
+		img{
+		border-radius:20px;
+		}
+    </style>
+</head>
+<body class="bg-gray-900 bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 text-white flex items-center justify-center min-h-screen">
+
+    <div class="text-center p-8 max-w-4xl mx-auto">
+        <!-- Logo -->
+        <div class="mb-8">
+            <img src="logo.png" alt="CodeCreators Logo" class="w-48 h-48 mx-auto">
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">
+            We're Launching Soon!
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-lg md:text-xl text-gray-300 mb-8">
+            Our team is working hard to bring you something amazing. Stay tuned!
+        </p>
+
+        <!-- Countdown Timer -->
+        <div id="countdown" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-2xl mx-auto mb-12">
+            <div class="timer-box p-6 rounded-lg border border-gray-700">
+                <div id="days" class="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">00</div>
+                <div class="text-sm uppercase tracking-wider text-gray-400 mt-2">Days</div>
+            </div>
+            <div class="timer-box p-6 rounded-lg border border-gray-700">
+                <div id="hours" class="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">00</div>
+                <div class="text-sm uppercase tracking-wider text-gray-400 mt-2">Hours</div>
+            </div>
+            <div class="timer-box p-6 rounded-lg border border-gray-700">
+                <div id="minutes" class="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">00</div>
+                <div class="text-sm uppercase tracking-wider text-gray-400 mt-2">Minutes</div>
+            </div>
+            <div class="timer-box p-6 rounded-lg border border-gray-700">
+                <div id="seconds" class="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">00</div>
+                <div class="text-sm uppercase tracking-wider text-gray-400 mt-2">Seconds</div>
+            </div>
+        </div>
+
+        <!-- Subscription Form -->
+        <div class="mt-8">
+            <p class="text-gray-300 mb-4">Get notified when we launch:</p>
+            <form class="flex flex-col sm:flex-row justify-center max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email" class="w-full sm:w-auto flex-grow px-4 py-3 rounded-md sm:rounded-l-md sm:rounded-r-none text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2 sm:mb-0" required>
+                <button type="submit" class="bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 text-white font-bold py-3 px-6 rounded-md sm:rounded-r-md sm:rounded-l-none transition duration-300">
+                    Notify Me
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        const countDownDate = new Date("Oct 7, 2025 00:00:00").getTime();
+
+        // Update the count down every 1 second
+        const x = setInterval(function() {
+
+            // Get today's date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            const distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the corresponding elements
+            document.getElementById("days").innerHTML = days < 10 ? '0' + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? '0' + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? '0' + seconds : seconds;
+
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "<div class='col-span-4 text-2xl font-bold'>We are live!</div>";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
